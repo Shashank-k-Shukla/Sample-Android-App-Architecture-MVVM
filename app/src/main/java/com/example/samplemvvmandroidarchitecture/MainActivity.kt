@@ -22,7 +22,9 @@ import com.example.samplemvvmandroidarchitecture.store.presentation.products_scr
 import com.example.samplemvvmandroidarchitecture.ui.theme.SampleMVVMAndroidArchitectureTheme
 import com.example.samplemvvmandroidarchitecture.util.Event
 import com.example.samplemvvmandroidarchitecture.util.EventBus
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

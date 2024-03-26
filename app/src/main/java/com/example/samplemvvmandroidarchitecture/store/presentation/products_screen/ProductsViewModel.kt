@@ -3,6 +3,8 @@ package com.example.samplemvvmandroidarchitecture.store.presentation.products_sc
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.samplemvvmandroidarchitecture.store.domain.repository.ProductsRepository
+import com.example.samplemvvmandroidarchitecture.store.presentation.util.sendEvent
+import com.example.samplemvvmandroidarchitecture.util.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,7 +24,7 @@ class ProductsViewModel @Inject constructor(
         getProducts()
     }
 
-    fun getProducts() {
+    private fun getProducts() {
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
             productsRepository.getProducts()
@@ -36,7 +38,7 @@ class ProductsViewModel @Inject constructor(
                             error = error.message
                         )
                     }
-//                    sendEvent(Event.Toast(error.message))
+                    sendEvent(Event.Toast(error.message))
                 }
             _state.update { it.copy(isLoading = false) }
         }
